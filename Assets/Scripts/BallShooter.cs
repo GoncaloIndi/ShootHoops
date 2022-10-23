@@ -18,9 +18,13 @@ public class BallShooter : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && canShoot)
+        if (Input.touchCount > 0)
         {
-            Shoot();
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began && canShoot)
+            {
+                Shoot();
+            }
         }
     }
 
